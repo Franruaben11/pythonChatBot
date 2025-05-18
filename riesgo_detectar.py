@@ -31,3 +31,4 @@ def comunicacion_agente(input):
     )
     return respuesta.choices[0].message.content.strip()
 
+
