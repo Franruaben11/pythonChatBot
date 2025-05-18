@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Chat con IA</title>
-  <link rel="stylesheet" href="../static/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat simple</title>
+  <link rel="stylesheet" href="../static/style.css" />
 </head>
 <body>
+
   <div class="chat-container">
     <div id="chat-box" class="chat-box"></div>
     <div class="input-container">
-      <input type="text" id="user-input" placeholder="Escribí tu mensaje...">
-      <button onclick="enviarMensaje()">Enviar</button>
+      <input type="text" id="user-input" placeholder="Escribe un mensaje..." />
+      <button id="btnEnviar" onclick="enviarMensaje()">
+        <img src="../static/img_send.svg" alt="Enviar" />
+      </button>
     </div>
   </div>
-  <script src="../static/js/main.js" ></script>
+
+  <script src="../static/js/main.js"></script>
 </body>
 </html>
+

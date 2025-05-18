@@ -31,4 +31,24 @@ def comunicacion_agente(input):
     )
     return respuesta.choices[0].message.content.strip()
 
+def analizar_mensaje_con_ia(input):
+    prompt = f"""
+    Analizá este mensaje: "{input}".
+    Si contiene algo emocional relevante según estos criterios:
+    1. Información personal importante (ejemplo: nombre, edad, contexto familiar o laboral).
+    2. Emociones intensas (tristeza, ansiedad, enojo, etc).
+    3. Soledad o pedido de ayuda.
+    4. Cambios en el estado emocional.
+    Devolvé un resumen corto: emoción + tema.
+    Si no hay nada, devolvé: "NINGUNO"
+    """
 
+    mensajes: list[ChatCompletionMessageParam] = [
+        {"role": "user", "content": prompt}
+    ]
+
+    respuesta = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=mensajes
+    )
+    return respuesta.choices[0].message.content.strip()

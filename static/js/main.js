@@ -5,7 +5,7 @@ function enviarMensaje() {
       const mensaje = input.value;
       if (mensaje.trim() === '') return;
 
-      chatBox.innerHTML += `<div class="mensaje usuario">${mensaje}</div>`;
+      chatBox.innerHTML += `<div class="message user">${mensaje}</div>`;
       input.value = '';
 
       fetch("http://127.0.0.1:3000/", {
@@ -17,11 +17,11 @@ function enviarMensaje() {
       })
           .then(res => res.json())
           .then(data => {
-              console.log(data)
+              console.log("q")
                     // Simula respuesta IA
             setTimeout(() => {
         //agrega un mensaje en el contenedor
-        chatBox.innerHTML += `<div class="mensaje ia">${data.respuesta}</div>`;
+        chatBox.innerHTML += `<div class="message bot">${data.respuesta}</div>`;
         //el chat se desplace automáticamente hacia abajo
         chatBox.scrollTop = chatBox.scrollHeight;
       }, 500);

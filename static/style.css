@@ -1,6 +1,6 @@
 body {
-  font-family: sans-serif;
-  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background: #f7f3ec;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,57 +9,86 @@ body {
 }
 
 .chat-container {
-  width: 90%;
-  max-width: 400px;
-  background: #fff;
+  width: 500px;
+  background: #f7f3ec;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  height: 600px;
 }
 
 .chat-box {
   flex: 1;
-  padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: flex-start; /* cambio clave */
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #fff9f2;
+  scroll-behavior: smooth;
+  margin-bottom: 10px;
 }
 
-.mensaje {
+.message {
+  max-width: 70%;
   padding: 10px 15px;
   border-radius: 15px;
-  max-width: 80%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
-.usuario {
-  background-color: #DCF8C6;
-  align-self: flex-end;
-}
-
-.ia {
-  background-color: #EEE;
+.message.bot {
+  background: #dff3f4;
   align-self: flex-start;
+}
+
+.message.user {
+  background: #3e6e5e;
+  color: white;
+  align-self: flex-end;
 }
 
 .input-container {
   display: flex;
-  border-top: 1px solid #ccc;
+  align-items: center;
 }
 
 input[type="text"] {
   flex: 1;
-  padding: 10px;
-  border: none;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 14px;
   outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #3e6e5e;
 }
 
 button {
-  padding: 10px;
+  background-color: #3e6e5e;
   border: none;
-  background-color: #4CAF50;
-  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+button img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+
 }
