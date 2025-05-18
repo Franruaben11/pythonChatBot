@@ -4,7 +4,7 @@ from riesgo_detectar import *
 app = Flask(__name__)
 @app.route('/')
 def index():
-    log=True
+    log=False
     if(log):
         return render_template("chat.html", respuesta="")
     else:
