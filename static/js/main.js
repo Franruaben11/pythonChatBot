@@ -10,6 +10,7 @@ function enviarMensaje() {
 
       fetch("http://127.0.0.1:3000/", {
           method: 'POST',
+          credentials: 'include',
           headers: {
               'Content-Type': 'application/json'
           },
@@ -17,16 +18,14 @@ function enviarMensaje() {
       })
           .then(res => res.json())
           .then(data => {
-              console.log("q")
-                    // Simula respuesta IA
-            setTimeout(() => {
-        //agrega un mensaje en el contenedor
-        chatBox.innerHTML += `<div class="message bot">${data.respuesta}</div>`;
-        //el chat se desplace automáticamente hacia abajo
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 500);
-          });
+              // Simula respuesta IA
 
-
+              setTimeout(() => {
+              //agrega un mensaje en el contenedor
+              chatBox.innerHTML += `<div class="message bot">${data.respuesta}</div>`;
+              //el chat se desplace automáticamente hacia abajo
+              chatBox.scrollTop = chatBox.scrollHeight;
+          }, 500);
+      });
     }
 

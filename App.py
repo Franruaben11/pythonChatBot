@@ -1,11 +1,11 @@
-import time
-
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
+from config import FLASK_SECRET_KEY
 from riesgo_detectar import *
 from models.db import Database
 from models.user import Usuario
 
 app = Flask(__name__)
+app.secret_key = FLASK_SECRET_KEY
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -28,7 +28,9 @@ def login():
         db.cerrar()
 
         if login_correcto:
-            return render_template("chat.html", respuesta="Login exitoso")
+            session['user_id'] = "id_test"       #Guardo el user_id para poder utilizarlo luego
+
+            return render_template("chat.html")
         else:
             return render_template("login.html", respuesta="Usuario o contraseña incorrecta")
     # este se compila cuando es 'GET' cuando entra por primera vez (no apreta POST)

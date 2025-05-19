@@ -1,7 +1,7 @@
 import psycopg2
 from config import CONNECT_DB
 
-class Database():
+class Database:
     def __init__(self):
         self.conexion = None
         self.cursor = None
@@ -18,3 +18,17 @@ class Database():
             self.cursor.close()
         if self.conexion:
             self.conexion.close()
+
+    def realizar_select(self):
+        self.cursor.execute("SELECT * FROM usuario")
+        resultados = self.cursor.fetchall()
+        for fila in resultados:
+            print(fila)
+"""
+db = Database()
+db.conectar()
+
+db.realizar_select()
+
+db.cerrar()
+"""
