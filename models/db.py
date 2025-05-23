@@ -24,11 +24,3 @@ class Database:
         resultados = self.cursor.fetchall()
         for fila in resultados:
             print(fila)
-"""
-db = Database()
-db.conectar()
-
-db.realizar_select()
-
-db.cerrar()
-"""

@@ -17,9 +17,15 @@ def detectar_riesgo_con_gpt(input):
     )
     return respuesta.choices[0].message.content.strip()
 
-def comunicacion_agente(input):
-    prompt = (f"Sos un asistente psicologico que debes responder al siguiente mensaje, teniendo en cuenta que tu "
-              f"funcion es analizar a la otra persona, utiliza jerga argentina: '{input}'")
+def comunicacion_agente(input, prompt_aux=""):
+    prompt = (
+        f"Sos un psicólogo virtual que charla con la persona para ayudarla a desahogarse. "
+        f"Usás jerga argentina, empatizás y analizás lo que dice para conocerla mejor. "
+        f"Teniendo en cuenta el contexto previo: {prompt_aux}, respondé al siguiente mensaje "
+        f"de forma amable, haciendo preguntas que inviten a que la persona se abra y reflexione. "
+        f"La persona dice: '{input}'."
+    )
+
 
     mensajes: list[ChatCompletionMessageParam] = [
         {"role": "user", "content": prompt}

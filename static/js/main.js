@@ -1,14 +1,20 @@
+setInterval(() => {
+    const data = JSON.stringify({ usuarioId: userId });
+    // Con sendBeacon le mandamos los datos al servidor
+    const blob = new Blob([data], { type: 'application/json' });
+    navigator.sendBeacon('/api/enviar_ping', blob);
+}, 10000);
+
 
 function enviarMensaje() {
-      const input = document.getElementById('user-input');
+    const input = document.getElementById('user-input');
       const chatBox = document.getElementById('chat-box');
       const mensaje = input.value;
       if (mensaje.trim() === '') return;
 
       chatBox.innerHTML += `<div class="message user">${mensaje}</div>`;
       input.value = '';
-
-      fetch("http://127.0.0.1:3000/", {
+      fetch("/api/chat", {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -19,7 +25,6 @@ function enviarMensaje() {
           .then(res => res.json())
           .then(data => {
               // Simula respuesta IA
-
               setTimeout(() => {
               //agrega un mensaje en el contenedor
               chatBox.innerHTML += `<div class="message bot">${data.respuesta}</div>`;
