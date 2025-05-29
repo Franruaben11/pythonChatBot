@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, session, render_template, redirect, url_for
-from funciones_back import comunicacion_agente
+from utils.funciones import comunicacion_agente
 from models.redis_client import RedisClient
 
 chat_bp = Blueprint('chat', __name__)

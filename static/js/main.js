@@ -1,11 +1,3 @@
-setInterval(() => {
-    const data = JSON.stringify({ usuarioId: userId });
-    // Con sendBeacon le mandamos los datos al servidor
-    const blob = new Blob([data], { type: 'application/json' });
-    navigator.sendBeacon('/api/enviar_ping', blob);
-}, 10000);
-
-
 function enviarMensaje() {
     const input = document.getElementById('user-input');
       const chatBox = document.getElementById('chat-box');

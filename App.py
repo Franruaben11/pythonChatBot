@@ -3,7 +3,7 @@ from flask_cors import CORS
 from config import FLASK_SECRET_KEY
 from rutas.chat_routes import chat_bp
 from rutas.login_routes import login_bp
-from rutas.ping_user import ping_user_bp
+
 
 app = Flask(__name__)
 app.secret_key = FLASK_SECRET_KEY
@@ -16,7 +16,7 @@ def index():
 
 app.register_blueprint(login_bp)
 app.register_blueprint(chat_bp)
-app.register_blueprint(ping_user_bp)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -11,10 +11,14 @@ class RedisClient:
         self.r = redis.Redis(**CONNECT_REDIS)
 
     def save_user_message(self, user_id, message):
-        self.r.rpush(f"chat:{user_id}", f"usuario: {message}")
+        key = f"chat:{user_id}"
+        self.r.rpush(key, f"usuario: {message}")
+        self.r.expire(key, 3600)  # Si no hay actividad por 1 hora se eliminan todos sus mensajes del redis
 
     def save_ai_message(self, user_id, message):
-        self.r.rpush(f"chat:{user_id}", f"ai: {message}")
+        key = f"chat:{user_id}"
+        self.r.rpush(key, f"ai: {message}")
+        self.r.expire(key, 3600)  # Si no hay actividad por 1 hora se eliminan todos sus mensajes del redis
 
     def get_last_12_msg(self, user_id):
         msgs = self.r.lrange(f"chat:{user_id}", -12, -1)
